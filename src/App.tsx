@@ -182,9 +182,26 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <footer className="text-center py-6 text-gray-400">
-        &copy; Profile Dicaprio 2025
+      <footer className="footer">
+        &copy; {new Date().getFullYear()} Profile Dicaprio. All rights reserved.
+        <div className="social-links">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a href="mailto:your-email@example.com">
+            Email
+          </a>
+        </div>
       </footer>
+    </>
+  );
+};
+
+export default App;
+
     </>
   );
 };
