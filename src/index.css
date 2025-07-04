@@ -1,0 +1,103 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ff0000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Added to stack sections vertically */
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.5em; /* Adjusted for h2 */
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1.125em; /* Adjusted for paragraph text */
+  color: rgba(255, 255, 255, 0.87); /* Consistent text color */
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: #ffffff; /* Text color for buttons */
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s; /* Added transition for background color */
+}
+
+button:hover {
+  border-color: #646cff;
+  background-color: #2a2a2a; /* Darker background on hover */
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #395772;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+    color: #000; /* Text color for buttons in light mode */
+  }
+}
+
+/* Additional styles for sections */
+section {
+  width: 100%;
+  padding: 2rem 0; /* Vertical padding for sections */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px; /* Maximum width for content */
+  margin: 0 auto; /* Center the container */
+  padding: 0 1rem; /* Horizontal padding */
+}

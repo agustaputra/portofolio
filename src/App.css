@@ -1,0 +1,59 @@
+/* App.css */
+
+/* General Styles */
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  background: linear-gradient(270deg, #dd1db4, #ff4b2b, #ff37cd, #8b2cda); 
+  background-size: 800% 800%;
+  animation: animatedGradient 20s ease infinite;
+}
+
+/* Animated Background Gradient */
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Section Styles */
+section {
+  padding: 4rem 0; /* Vertical padding */
+  position: relative; /* For positioning background elements */
+}
+
+/* Card Styles */
+.bg-card {
+  background-color: rgba(42, 42, 42, 0.8); /* Semi-transparent card background */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Font Animation */
+h1, h2, h3, p {
+  animation: textAnimation 1s ease forwards; /* Text animation */
+}
+
+/* Text Animation */
+@keyframes textAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
