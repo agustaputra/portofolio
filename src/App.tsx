@@ -1,30 +1,33 @@
 import { useState, useRef } from 'react';
 import './App.css';
-import { SkillsSection } from './SkillsSection'; // Import the SkillsSection component
-import { Send } from 'lucide-react'; // Import Send icon from lucide-react
+import { SkillsSection } from './SkillsSection';
+import { Send } from 'lucide-react';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formRef = useRef<HTMLFormElement | null>(null); // Create ref for form
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setActiveSection(id);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const name = (e.target as any).name.value;
-    const email = (e.target as any).email.value;
-    const message = (e.target as any).message.value;
+    const form = e.currentTarget;
+    const name = form.name.value;
+    const email = form.email.value;
+    const message = form.message.value;
 
     const mailtoLink = `mailto:your-email@example.com?subject=Message from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${name} <${email}>`;
-    window.location.href = mailtoLink;
-
-    setIsSubmitting(false); // Reset submitting state
+    
+    setTimeout(() => {
+      window.location.href = mailtoLink;
+      setIsSubmitting(false);
+    }, 1000); // optional delay to show the button state
   };
 
   return (
@@ -58,7 +61,7 @@ const App: React.FC = () => {
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-           Sebagai Front-End Developer, saya berspesialisasi dalam merekayasa UI yang indah, fungsional, dan berpusat pada pengguna menggunakan teknologi web modern.
+            Sebagai Front-End Developer, saya berspesialisasi dalam merekayasa UI yang indah, fungsional, dan berpusat pada pengguna menggunakan teknologi web modern.
           </p>
           <button 
             onClick={() => scrollTo('contact')}
@@ -71,62 +74,58 @@ const App: React.FC = () => {
 
       <section id="about" className="min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Tentang Saya</h2>
+          <h2 className="text-3xl font-bold mb-4">About</h2>
           <p className="text-lg text-gray-300">
-            Saya mahasiswa informatika dari Universitas Satya Terra Bhinneka. Saya pengembang web yang cukup ahli di bidangnya. Saya juga memiliki hobi bermain game agar tidak terlalu stres karena codingan yang berwarna merah "ERROR".
+            Saya mahasiswa informatika dari Universitas Satya Terra Bhinneka yang memiliki semangat tinggi untuk terus berkembang. Saya juga berminat untuk belajar di bagian web. Saya juga memiliki hobi bermain game agar tidak terlalu stres karena codingan yang berwarna merah.
           </p>
         </div>
       </section>
 
-<section id="hobi" className="min-h-screen flex items-center justify-center">
-  <div className="container mx-auto px-6 text-center">
-    <h2 className="text-3xl font-bold mb-4">HOBI</h2>
-    <p className="text-lg text-gray-300 mb-8">Berikut ini beberapa hobi yang saya suka:</p>
-    
-    <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-      {/* Hobi 1 */}
-      <div style={{ width: '200px', textAlign: 'center' }}>
-        <img 
-          src="\futsal.jpg" 
-          alt="Futsal" 
-          style={{ width: '70%', borderRadius: '10px', marginBottom: '0.5rem' }} 
-        />
-        <p>Futsal</p>
-      </div>
+      <section id="hobi" className="min-h-screen flex items-center justify-center">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4">HOBI</h2>
+          <p className="text-lg text-gray-300 mb-8">Berikut ini beberapa hobi yang saya suka:</p>
+          
+          <div className="flex justify-center gap-8 flex-wrap">
+            <div className="w-[200px] text-center">
+              <img 
+                src="/futsal.jpg" 
+                alt="Futsal" 
+                className="w-[70%] rounded-lg mb-2 mx-auto" 
+              />
+              <p>Futsal</p>
+            </div>
 
-      {/* Hobi 2 */}
-      <div style={{ width: '200px', textAlign: 'center' }}>
-        <img 
-          src="\berenang.jpg" 
-          alt="Berenang" 
-          style={{ width: '100%', borderRadius: '10px', marginBottom: '0.5rem' }} 
-        />
-        <p>Berenang</p>
-      </div>
+            <div className="w-[200px] text-center">
+              <img 
+                src="/berenang.jpg" 
+                alt="Berenang" 
+                className="w-full rounded-lg mb-2" 
+              />
+              <p>Berenang</p>
+            </div>
 
-      {/* Hobi 3 */}
-      <div style={{ width: '200px', textAlign: 'center' }}>
-        <img 
-          src="/ml.jpg" 
-          alt="Mobile Legend" 
-          style={{ width: '100%', borderRadius: '10px', marginBottom: '0.5rem' }} 
-        />
-        <p>Mobile Legend</p>
-      </div>
-    </div>
-  </div>
-</section>
-
+            <div className="w-[200px] text-center">
+              <img 
+                src="/ml.jpg" 
+                alt="Mobile Legend" 
+                className="w-full rounded-lg mb-2" 
+              />
+              <p>Mobile Legend</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="skills" className="min-h-screen flex items-center justify-center">
-        <SkillsSection /> {/* Include the SkillsSection component */}
+        <SkillsSection />
       </section>
 
       <section id="contact" className="min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">Hubungi Saya</h2>
           <p className="text-lg text-gray-300 mb-4">
-            Saya antusias untuk mendengar tentang proyek Anda dan bagaimana saya dapat membantu mewujudkan visi Anda. Silakan tinggalkan pesan, dan saya akan menghubungi Anda kembali untuk menjadwalkan diskusi lebih lanjut.
+            Saya antusias untuk mendengar tentang proyek Anda dan bagaimana saya dapat membantu mewujudkan visi Anda. Silakan tinggalkan pesan, dan saya akan menghubungi Anda kembali.
           </p>
           
           <div className="bg-card p-8 rounded-lg shadow-xs">
@@ -182,8 +181,12 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <footer className="text-center py-6 text-gray-400">
+        &copy; Profile Dicaprio 2025
+      </footer>
     </>
   );
-}
+};
 
 export default App;
