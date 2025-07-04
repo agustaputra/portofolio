@@ -155,7 +155,7 @@ const App: React.FC = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="yaya877@gmail.com"
+                  placeholder="nico@gmail.com"
                 />
               </div>
               <div>
